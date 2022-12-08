@@ -22,24 +22,16 @@
     @endif
 
     <div class="container">
-        <div class="col-lg-3 col-md-3 ">
-            <!-- small box -->
-            <div class="small-box bg-secondary p-4 m-2">
-                <div class="inner">
-                    <a href="{{ route('add.role') }}"  style="text-decoration: none;color: #1a174d;font-size: 25px">Add Role</a>
-                </div>
-                <div class="icon">
-                    <i class="nav-icon fa-sharp fa-solid fa-pen"></i>
-                </div>
-            </div>
+
+        <div class="col-md-3 mb-3 p-3">
+            <a href="{{ route('add.role') }}"  style="text-decoration: none;color: #1a174d;font-size: 25px" class="btn bg-secondary">Add Role</a>
         </div>
         <table class="table table-bordered data-table">
             <thead>
-
             <tr>
                 @foreach($roles as $role)
                 <th>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div>
                         {{$role->name}}
                         </div>
@@ -61,9 +53,9 @@
                 @foreach($roles as $role)
                     <td>
                         <ul>
-{{--                        @foreach($role->users as $user)--}}
-{{--                            <li>{{ $user->name}}</li>--}}
-{{--                        @endforeach--}}
+                        @foreach($role->users as $user)
+                            <li>{{ $user->name}}</li>
+                        @endforeach
                         </ul>
                     </td>
                 @endforeach

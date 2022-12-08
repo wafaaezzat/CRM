@@ -93,6 +93,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="{{ route('users')}}"
+                   class="nav-link {{ (request()->is('admin/users')) ? 'active' : '' }}">
+                    <i class="nav-icon fa-solid fa-users"></i>
+                    <p>
+                        Users
+                    </p>
+                </a>
+            </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

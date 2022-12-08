@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Action;
 use App\Models\role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,13 +16,13 @@ class ActionSeeder extends Seeder
      */
     public function run()
     {
-        role::insert([
+       Action::insert([
             'name'=>'call'
         ]);
-        role::insert([
+       Action::insert([
             'name'=>'visit'
         ]);
-        role::insert([
+       Action::insert([
             'name'=>'follow up'
         ]);
     }

@@ -30,8 +30,6 @@ class RoleController extends Controller
         ]);
         Role::create([
             'name' => $request['role_name'],
-            'created_by' => Auth::id(),
-
         ]);
         return redirect('admin/roles')->with('success','Role added successfully');
     }
