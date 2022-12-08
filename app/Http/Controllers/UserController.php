@@ -94,11 +94,22 @@ class UserController extends Controller
     }
 
 
-    public function assign(){
+    public function assign($id){
+        $customer=User::find($id);
+        $employees=User::where('role_id',2)->get();
+        return view('dashboards.admins.users.assign-customer', compact('customer','employees'));
+    }
+
+    public function assign_update(Request $request,$id){
+        $customer=User::find($id);
+        $customer->parent_id=$request->employee_id;
+        $customer->save();
+        return redirect('admin/customers')->with('success', 'Customer assigned to employee successfully.');
+    }
+
+    public function customers(){
         $employees=User::where('role_id',2)->get();
         $customers=User::where('role_id',3)->get();
         return view('dashboards.admins.users.customers', compact('employees','customers'));
-
-
     }
 }

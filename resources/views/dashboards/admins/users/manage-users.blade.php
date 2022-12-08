@@ -101,25 +101,6 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="text-center">
-                                    <label for="employee_id" class="col-md-4 col-form-label text-md-end">{{ __('Assign To Employee') }}</label>
-                                    <select class="form-select form-select-lg @error('employee_id') is-invalid @enderror " name="employee_id" id="employee_id">
-                                        <option value="option_select" disabled selected>Employees</option>
-                                        @foreach($employees as $employee)
-                                            <option value="{{$employee->id}}">
-                                                {{$employee->name}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div>
-                                        @error('employee_id')
-                                        <span class="text-danger error-text">{{$message}}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-5">
                                     <button type="submit" class="btn btn-primary">
