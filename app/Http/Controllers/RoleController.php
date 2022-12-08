@@ -2,85 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\role;
-use App\Http\Requests\StoreroleRequest;
-use App\Http\Requests\UpdateroleRequest;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $roles=Role::all();
+        $users=User::all();
+        return view('dashboards.admins.roles.roles',compact('roles','users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('dashboards.admins.roles.create-role');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreroleRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreroleRequest $request)
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'role_name' => ['required', 'string', 'max:255'],
+        ]);
+        Role::create([
+            'name' => $request['role_name'],
+            'created_by' => Auth::id(),
+
+        ]);
+        return redirect('admin/roles')->with('success','Role added successfully');
+    }
+
+
+    public function show()
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function show(role $role)
+
+    public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        return view('dashboards.admins.roles.edit-role', compact('role'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(role $role)
+
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'role_name' => ['required', 'string', 'max:255'],
+        ]);
+        Role::find($id)->update([
+            'name' => $request['role_name'],
+        ]);
+        return redirect('admin/roles')->with('success','User added successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateroleRequest  $request
-     * @param  \App\Models\role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateroleRequest $request, role $role)
+    public function destroy($id)
     {
-        //
+        $role = Role::find($id);
+        $role->delete();
+        return redirect('admin/roles')->with('success', 'Role Deleted successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(role $role)
-    {
-        //
-    }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\EmployeeController;
 use \App\Http\Controllers\CustomerController;
+use \App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('profile',[AdminController::class,'profile'])->name('admin.profile');
+    Route::get('roles',[RoleController::class,'index'])->name('admin.roles');
+    Route::get('create/role',[RoleController::class,'create'])->name('add.role');
+    Route::post('new/role',[RoleController::class,'store'])->name('create.role');
+    Route::get('edit/role/{id}',[RoleController::class,'edit'])->name('edit.role');
+    Route::post('update/role/{id}',[RoleController::class,'update'])->name('update.role');
+    Route::delete('delete/role/{id}',[RoleController::class,'destroy'])->name('delete.role');
 
 
     //////////////////AdminInfo/////////////////

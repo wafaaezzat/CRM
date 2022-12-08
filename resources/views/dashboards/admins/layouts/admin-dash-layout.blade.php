@@ -75,14 +75,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-compact nav-child-indent nav-collapse-hide-child nav-flat" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
+            <li class="nav-item">
                 <a href="{{ route('admin.dashboard')}}" class="nav-link {{ (request()->is('admin/dashboard*')) ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-home"></i>
-                  <p>
-                    Dashboard
-                  </p>
+                    <i class="nav-icon fas fa-home"></i>
+                    <p>
+                        Dashboard
+                    </p>
                 </a>
-              </li>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('admin.roles')}}"
+                   class="nav-link {{ (request()->is('admin/roles')) ? 'active' : '' }}">
+                    <i class="nav-icon fa-solid fa-pen"></i>
+                    <p>
+                        Roles
+                    </p>
+                </a>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
