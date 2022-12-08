@@ -43,6 +43,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function(){
     Route::get('edit/user/{id}',[UserController::class,'edit'])->name('edit.user');
     Route::post('update/user/{id}',[UserController::class,'update'])->name('update.user');
     Route::delete('delete/user/{id}',[UserController::class,'destroy'])->name('delete.user');
+    Route::get('assign/customer',[UserController::class,'assign'])->name('assign.customer');
 
 
     //////////////////AdminInfo/////////////////

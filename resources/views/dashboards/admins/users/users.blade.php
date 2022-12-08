@@ -20,16 +20,8 @@
     @endif
 
     <div class="container">
-        <div class="col-lg-3 col-md-3 ">
-            <!-- small box -->
-            <div class="small-box bg-secondary p-4 m-2">
-                <div class="inner">
-                    <a href="{{ route('add.user') }}"  style="text-decoration: none;color: #1a174d;font-size: 25px">Add New User</a>
-                </div>
-                <div class="icon">
-                    <i class="nav-icon fa-sharp fa-solid fa-user"></i>
-                </div>
-            </div>
+        <div class="col-md-3 mb-3 p-3">
+            <a href="{{ route('add.user') }}"  style="text-decoration: none;color: #1a174d;font-size: 25px" class="btn bg-secondary">Add New User</a>
         </div>
         <table class="table table-bordered data-table">
             <thead>

@@ -65,7 +65,7 @@
                             <div class="row mb-3">
                                 <div class="text-center">
                                     <select class="form-select form-select-lg @error('role_id') is-invalid @enderror " name="role_id" id="role_id">
-                                        <option value="{{$user->role_id}}" selected disabled>{{$user->role->name}}</option>
+                                        <option value="{{$user->role_id}}" selected>{{$user->role->name}}</option>
                                         @foreach($roles as $role)
                                             <option value="{{$role->id}}">
                                                 {{$role->name}}
