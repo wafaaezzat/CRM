@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +31,7 @@ class EmployeeController extends Controller
         ]);
 
         if(!$validator->passes()){
-            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
+            return redirect()->back()->with('error','Something went wrong.');
         }else{
             $query = User::find(Auth::user()->id)->update([
                 'name'=>$request->name,
@@ -40,9 +40,9 @@ class EmployeeController extends Controller
             ]);
 
             if(!$query){
-                return response()->json(['status'=>0,'msg'=>'Something went wrong.']);
+                return redirect()->back()->with('error','Something went wrong.');
             }else{
-                return response()->json(['status'=>1,'msg'=>'Your profile info has been update successfuly.']);
+                return redirect()->back()->with('success','Your profile info has been update successfuly.');
             }
         }
     }
@@ -92,6 +92,33 @@ class EmployeeController extends Controller
             User::find(Auth::user()->id)->update(['password'=>Hash::make($request->newpassword)]);
         }
         return redirect('employee/profile');
+    }
+    function customers(){
+        $customers=Auth::user()->children;
+        return view('dashboards.employees.customers.customers',compact('customers'));
+    }
+   function create_customer(){
+       $users=User::all();
+        return view('dashboards.employees.customers.add',compact('users'));
+    }
+   function store_customer(Request $request){
+       $request->validate([
+           'name' => ['required', 'string', 'max:255'],
+           'phone' => [ 'required','regex:/(01)[0-9]{9}/'],
+           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+           'address' => ['required', 'string'],
+           'password' => ['required', 'string', 'min:8', 'confirmed'],
+       ]);
+       User::create([
+           'name' => $request['name'],
+           'phone' => $request['phone'],
+           'email' => $request['email'],
+           'address' => $request['address'],
+           'role_id' =>3,
+           'parent_id' =>Auth::id(),
+           'password' => Hash::make($request['password']),
+       ]);
+       return redirect('employee/customers')->with('success','Customer added successfully');
     }
 
 

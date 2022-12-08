@@ -53,10 +53,18 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','isAdmin']], function(){
     Route::post('change-profile-picture',[AdminController::class,'updatePicture'])->name('adminPictureUpdate');
     Route::post('change-password',[AdminController::class,'changePassword'])->name('adminChangePassword');
 });
+
+
+
+
 Route::group(['prefix'=>'employee', 'middleware'=>['auth','isEmployee']], function(){
     Route::get('dashboard',[EmployeeController::class,'index'])->name('employee.dashboard');
     Route::get('profile',[EmployeeController::class,'profile'])->name('employee.profile');
-    Route::get('profile',[AdminController::class,'customers'])->name('admin.customers');
+
+
+    Route::get('customers',[EmployeeController::class,'customers'])->name('employee.customers');
+    Route::get('create/customers',[EmployeeController::class,'create_customer'])->name('employee.createCustomer');
+    Route::post('store/customers',[EmployeeController::class,'store_customer'])->name('employee.storeCustomer');
 
 
     //////////////////EmployeeInfo/////////////////
@@ -64,6 +72,11 @@ Route::group(['prefix'=>'employee', 'middleware'=>['auth','isEmployee']], functi
     Route::post('change-profile-picture',[EmployeeController::class,'updatePicture'])->name('employeePictureUpdate');
     Route::post('change-password',[EmployeeController::class,'changePassword'])->name('employeeChangePassword');
 });
+
+
+
+
+
 Route::group(['prefix'=>'customer', 'middleware'=>['auth','isCustomer']], function(){
     Route::get('dashboard',[CustomerController::class,'index'])->name('customer.dashboard');
     Route::get('profile',[CustomerController::class,'profile'])->name('customer.profile');

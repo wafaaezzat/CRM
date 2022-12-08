@@ -75,7 +75,8 @@
                   <div class="tab-content">
                     <div class="active tab-pane" id="personal_info">
                       <form class="form-horizontal" method="POST" action="{{ route('adminUpdateInfo') }}" id="AdminInfoForm">
-                        <div class="form-group row">
+                          @csrf
+                          <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" id="inputName" placeholder="Name" value="{{ Auth::user()->name }}" name="name">

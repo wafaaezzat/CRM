@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/plugins/ijaboCropTool/ijaboCropTool.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('assets/css/employeelte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
     <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -88,100 +88,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>
                    Profile Settings
                   </p>
-                  </p>
                 </a>
               </li>
 
             <li class="nav-item">
-                <a href="{{ route('users')}}" class="nav-link {{ (request()->is('employee/users')) ? 'active' : '' }}">
+                <a href="{{ route('employee.customers')}}" class="nav-link {{ (request()->is('employee/customers*')) ? 'active' : '' }}">
                   <i class="nav-icon fa-solid fa-users"></i>
                   <p>
-                  Users
-                  </p>
+                      My Customers
                   </p>
                 </a>
               </li>
-            <li class="nav-item">
-                <a href="{{ route('company.clients')}}" class="nav-link {{ (request()->is('employee/clients*')) ? 'active' : '' }}">
-                    <i class=" nav-icon  fa-solid fa-people-line"></i>
-                    <p>
-                        Clients
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('company.projects')}}" class="nav-link {{ (request()->is('employee/projects')) ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-book"></i>
-                    <p>
-                        Projects
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('employee.roles')}}" class="nav-link {{ (request()->is('employee/roles')) ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-pen"></i>
-                    <p>
-                        Roles
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('teams')}}" class="nav-link {{ (request()->is('employee/teams')) ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-people-group"></i>
-                    <p>
-                        Teams
-                    </p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ route('employee.exports')}}" class="nav-link {{ (request()->is('employee/exports')) ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-download"></i>
-                    <p>
-                        Exports
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('projects.attendance')}}" class="nav-link {{ (request()->is('employee/projects/attendance*')) ? 'active' : '' }}">
-                    <i class="nav-icon  fa-solid fa-clipboard-user"></i>
-                    <p>
-                        Project Attendance
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('employee.attendance')}}" class="nav-link {{ (request()->is('employee/attendance*')) ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-pen"></i>
-                    <p>
-                        My Attendance
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('users.attendance')}}" class="nav-link {{ (request()->is('employee/usersAttendance*')) ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-pen"></i>
-                    <p>
-                        Users Attendance
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('users.berDAY')}}" class="nav-link {{ (request()->is('employee/usersBerDAY*')) ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-pen"></i>
-                    <p>
-                        Users Attendance Ber Day
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('emloyee.reports')}}" class="nav-link {{ (request()->is('employee/reports*')) ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-bars"></i>
-                    <p>
-                        Reports
-                    </p>
-                </a>
-            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -49,7 +49,7 @@
                                 <img class="profile-user-img img-fluid img-circle employee_picture" src="{{ url('public/Image/'.Auth::user()->picture) }}" alt="User profile picture">
                             </div>
                             <h3 class="profile-username text-center employee_name">{{Auth::user()->name}}</h3>
-                            <p class="text-muted text-center">Admin</p>
+                            <p class="text-muted text-center">Employee</p>
                             <div class="image text-center">
                             <label><h4>Add image</h4></label>
                             <input type="file" class="form-control" required name="image" >
@@ -74,8 +74,9 @@
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="active tab-pane" id="personal_info">
-                      <form class="form-horizontal" method="POST" action="{{ route('employeeUpdateInfo') }}" id="AdminInfoForm">
-                        <div class="form-group row">
+                      <form class="form-horizontal" method="POST" action="{{ route('employeeUpdateInfo') }}" id="EmployeeInfoForm">
+                          @csrf
+                          <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" id="inputName" placeholder="Name" value="{{ Auth::user()->name }}" name="name">
@@ -100,7 +101,7 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="change_password">
-                        <form class="form-horizontal" action="{{ route('employeeChangePassword') }}" method="POST" id="changePasswordAdminForm">
+                        <form class="form-horizontal" action="{{ route('employeeChangePassword') }}" method="POST" id="changePasswordEmployeeForm">
                           @csrf
                             <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Old Passord</label>

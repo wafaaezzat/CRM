@@ -33,7 +33,7 @@ class AdminController extends Controller
         ]);
 
         if(!$validator->passes()){
-            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
+            return redirect()->back()->with('error','Something went wrong.');
         }else{
             $query = User::find(Auth::user()->id)->update([
                 'name'=>$request->name,
@@ -42,9 +42,9 @@ class AdminController extends Controller
             ]);
 
             if(!$query){
-                return response()->json(['status'=>0,'msg'=>'Something went wrong.']);
+                return redirect()->back()->with('error','Something went wrong.');
             }else{
-                return response()->json(['status'=>1,'msg'=>'Your profile info has been update successfuly.']);
+                return redirect()->back()->with('success','Your profile info has been update successfuly.');
             }
         }
     }

@@ -25,7 +25,6 @@
                 <!-- small box -->
                 <div class="small-box bg-secondary">
                     <div class="inner">
-                        <h3>{{$users->count()}}</h3>
                         <p>Registered User</p>
                     </div>
                     <div class="icon">
