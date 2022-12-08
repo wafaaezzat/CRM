@@ -33,6 +33,7 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Address</th>
+                <th>Add Action</th>
             </tr>
             </thead>
             <tbody>
@@ -44,6 +45,17 @@
                     <td>{{ $customer->email}}</td>
                     <td>{{ $customer->phone}}</td>
                     <td>{{ $customer->address}}</td>
+                    <td>
+                        @foreach($customer->actions as $action)
+                            <a href="{{route('action.result',$action->pivot->id)}}" class="btn bg-secondary">
+                            {{$action->name}}
+                            <a>
+                        @endforeach
+
+                    </td>
+                    <td>
+                        <a href="{{ route('add.action',$customer->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
             @endforeach
             </tbody>
         </table>

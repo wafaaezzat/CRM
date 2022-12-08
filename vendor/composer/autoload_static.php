@@ -569,6 +569,7 @@ class ComposerStaticInitf141b08f219f52ff5a4165c19e0dbcb4
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Traits\\ActionTrait' => __DIR__ . '/../..' . '/app/Traits/ActionTrait.php',
         'App\\Traits\\RoleTrait' => __DIR__ . '/../..' . '/app/Traits/RoleTrait.php',
         'App\\Traits\\UserTrait' => __DIR__ . '/../..' . '/app/Traits/UserTrait.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

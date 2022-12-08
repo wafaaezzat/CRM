@@ -2,6 +2,7 @@
 
 
 namespace App\Traits;
+use App\Models\Action;
 use App\Models\Role;
 use App\Models\User;
 
@@ -19,5 +20,10 @@ trait UserTrait
     public function children()
     {
         return $this->hasMany(User::class, 'parent_id');
+    }
+
+    public function actions()
+    {
+        return $this->belongsToMany(Action::class,'action_users')->withPivot('result','id')->withTimestamps();
     }
 }

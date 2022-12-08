@@ -6,6 +6,7 @@ use \App\Http\Controllers\EmployeeController;
 use \App\Http\Controllers\CustomerController;
 use \App\Http\Controllers\RoleController;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\ActionUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,13 @@ Route::group(['prefix'=>'employee', 'middleware'=>['auth','isEmployee']], functi
     Route::get('customers',[EmployeeController::class,'customers'])->name('employee.customers');
     Route::get('create/customers',[EmployeeController::class,'create_customer'])->name('employee.createCustomer');
     Route::post('store/customers',[EmployeeController::class,'store_customer'])->name('employee.storeCustomer');
+
+
+    Route::get('add/action/{id}',[ActionUserController::class,'create'])->name('add.action');
+    Route::post('store/action/{id}',[ActionUserController::class,'store'])->name('store.action');
+
+    Route::get('action/result/{id}',[ActionUserController::class,'result'])->name('action.result');
+    Route::post('add/result/{id}',[ActionUserController::class,'add_result'])->name('add.result');
 
 
     //////////////////EmployeeInfo/////////////////

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\actionUser;
 use App\Http\Requests\Storeaction_userRequest;
 use App\Http\Requests\Updateaction_userRequest;
+use App\Models\User;
+use http\Env\Request;
 
 class ActionUserController extends Controller
 {
@@ -23,9 +26,11 @@ class ActionUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $customer=User::find($id);
+        $actions=Action::all();
+        return view('dashboards.employees.actions.add',compact('customer','actions'));
     }
 
     /**
@@ -34,9 +39,11 @@ class ActionUserController extends Controller
      * @param  \App\Http\Requests\Storeaction_userRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storeaction_userRequest $request)
+    public function store(\Illuminate\Http\Request $request,$id)
     {
-        //
+        $customer=User::find($id);
+        $customer->actions()->attach($request->action_id);
+        return redirect()->back()->with('success','Action added successfully!');
     }
 
     /**
@@ -82,5 +89,19 @@ class ActionUserController extends Controller
     public function destroy(actionUser $action_user)
     {
         //
+    }
+
+    public function add_result(\Illuminate\Http\Request $request ,$id)
+    {
+        $action=ActionUser::find($id);
+        $action->result=$request->result;
+        $action->save();
+        return redirect()->back()->with('success','Result added successfully!');
+    }
+
+
+    public function result($id){
+        $action=ActionUser::find($id);
+        return view('dashboards.employees.actions.result',compact('action'));
     }
 }
