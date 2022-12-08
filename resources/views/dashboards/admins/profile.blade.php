@@ -79,16 +79,25 @@
                           <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName" placeholder="Name" value="{{ Auth::user()->name }}" name="name">
-
-                            <span class="text-danger error-text name_error"></span>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="inputName" placeholder="Name" value="{{ Auth::user()->name }}" name="name">
+                              @error('name')
+                              <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                              @enderror
                           </div>
+
+
                         </div>
                         <div class="form-group row">
                           <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" value="{{ Auth::user()->email }}" name="email">
-                            <span class="text-danger error-text email_error"></span>
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="inputEmail" placeholder="Email" value="{{ Auth::user()->email }}" name="email">
+                              @error('email')
+                              <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                              @enderror
                           </div>
                         </div>
 
@@ -106,22 +115,33 @@
                             <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Old Passord</label>
                             <div class="col-sm-10">
-                              <input type="password" class="form-control" id="inputPassword" placeholder="Enter current password" name="oldpassword">
-                              <span class="text-danger error-text oldpassword_error"></span>
-                            </div>
+                              <input type="password" class="form-control @error('oldpassword') is-invalid @enderror" id="inputPassword" placeholder="Enter current password" name="oldpassword">
+                                @error('oldpassword')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror                                 </div>
                           </div>
                           <div class="form-group row">
                             <label for="newpassword" class="col-sm-2 col-form-label">New Password</label>
                             <div class="col-sm-10">
-                              <input type="password" class="form-control" id="newpassword" placeholder="Enter new password" name="newpassword">
-                              <span class="text-danger error-text newpassword_error"></span>
+                              <input type="password"  class="form-control @error('newpassword') is-invalid @enderror" id="newpassword" placeholder="Enter new password" name="newpassword">
+                                @error('newpassword')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="cnewpassword" class="col-sm-2 col-form-label">Confirm New Password</label>
                             <div class="col-sm-10">
-                              <input type="password" class="form-control" id="cnewpassword" placeholder="ReEnter new password" name="cnewpassword">
-                              <span class="text-danger error-text cnewpassword_error"></span>
+                              <input type="password"  class="form-control @error('cnewpassword') is-invalid @enderror"  id="cnewpassword" placeholder="ReEnter new password" name="cnewpassword">
+                                @error('cnewpassword')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                           </div>
                           <div class="form-group row">

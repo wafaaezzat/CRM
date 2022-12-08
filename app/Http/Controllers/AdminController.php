@@ -14,39 +14,29 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
    public function index(){
-       return view('dashboards.admins.index');
+       $count=User::all()->count();
+       $customers=User::where('role_id',3)->count();
+       $employees=User::where('role_id',2)->count();
+       $admins=User::where('role_id',1)->count();
+       return view('dashboards.admins.index',compact('count','customers','employees','admins'));
    }
 
 
     function profile(){
         return view('dashboards.admins.profile');
     }
-    function settings(){
-        return view('dashboards.admins.settings');
-    }
 
     function updateInfo(Request $request){
-
-        $validator = Validator::make($request->all(),[
+        $request->validate([
             'name'=>'required',
-            'email'=> 'required|email|unique:users,email,'.Auth::user()->id
+            'email'=> 'required'
+        ]);
+        User::find(Auth::user()->id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
         ]);
 
-        if(!$validator->passes()){
-            return redirect()->back()->with('error','Something went wrong.');
-        }else{
-            $query = User::find(Auth::user()->id)->update([
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'favoriteColor'=>$request->favoritecolor,
-            ]);
-
-            if(!$query){
-                return redirect()->back()->with('error','Something went wrong.');
-            }else{
-                return redirect()->back()->with('success','Your profile info has been update successfuly.');
-            }
-        }
+        return redirect()->back()->with('success','Your profile info has been update successfully.');
     }
 
     function updatePicture(Request $request){

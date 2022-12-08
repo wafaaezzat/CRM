@@ -31,8 +31,8 @@
             </tr>
             </thead>
             <tbody>
-            <td>{{\App\Models\Action::find($action->action_id)->name}}</td>
             <td>{{$action->id}}</td>
+            <td>{{\App\Models\Action::find($action->action_id)->name}}</td>
             @if($action->result)
                 <td>{{$action->result}}</td>
             @else

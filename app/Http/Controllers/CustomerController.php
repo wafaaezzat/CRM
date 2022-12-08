@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Validator;
 class CustomerController extends Controller
 {
     public function index(){
-        return view('dashboards.customers.index');
+        $count=User::all()->count();
+        $customers=User::where('role_id',3)->count();
+        $employees=User::where('role_id',2)->count();
+        $admins=User::where('role_id',1)->count();
+        return view('dashboards.customers.index',compact('count','customers','employees','admins'));
     }
 
 

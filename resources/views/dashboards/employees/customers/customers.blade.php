@@ -22,7 +22,7 @@
 
     <div class="container">
         <div class="col-md-3 mb-3 p-3">
-            <a href="{{ route('employee.createCustomer') }}"  style="text-decoration: none;color: #1a174d;font-size: 25px" class="btn bg-secondary">Add New User</a>
+            <a href="{{ route('employee.createCustomer') }}"  style="text-decoration: none;color: #1a174d;font-size: 25px" class="btn bg-secondary">Add New Customer</a>
         </div>
         <table class="table table-bordered data-table">
             <thead>
@@ -33,6 +33,7 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Address</th>
+                <th>Actions</th>
                 <th>Add Action</th>
             </tr>
             </thead>
@@ -54,7 +55,7 @@
 
                     </td>
                     <td>
-                        <a href="{{ route('add.action',$customer->id)}}" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{ route('add.action',$customer->id)}}" class="btn btn-secondary"><i class="fa-solid fa-plus"></i></a>
                     </td>
             @endforeach
             </tbody>
